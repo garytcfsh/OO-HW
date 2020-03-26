@@ -1,3 +1,5 @@
+// list.cpp
+ 
 #include "list.h"
 #include <iostream>
 
@@ -24,6 +26,15 @@ void List::append( char c)
 	next->num = this->num + 1;
 }
 
+void List::append( float f)
+{
+	next = new List();
+	next->back = this;
+	next->f = f;
+	next->num = this->num + 1;
+}
+
+/*
 List* List::remove( List *rm)
 {
 	if (rm->back != NULL)
@@ -34,4 +45,16 @@ List* List::remove( List *rm)
 		rm = rm->next;
 	}
 	return rm;
+}
+*/
+
+void List::remove( List *&rm)
+{
+	if (rm->back != NULL)
+		rm->back->next = rm->next;
+	if (rm->next != NULL)
+	{
+		rm->next->back = rm->back;
+		rm = rm->next;
+	}
 }

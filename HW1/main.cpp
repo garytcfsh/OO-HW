@@ -31,25 +31,25 @@ int main( int argc, char **argv)
     head = head->next;
     now = head;
     int j=0, k=0;
-    int newCount = count;
+    int newCount = count;//calculated how many list is removed
     for ( j=0; j<count; j++)
     {
 	    temp = now->next;
-	    count = newCount;
 	    for ( k=j+1; k<count; k++)
 	    {
-		if (now->c == temp->c)
+		if (now->c == temp->c)//hit
 		{
 			now->count = now->count + 1;
-			temp = temp->remove( temp);
+			temp->remove( temp);//remove hit list and set next list as current list
 			newCount--;
 		}
-		else
+		else//miss
 		{
 			temp = temp->next;
 		}
 	    }
-	    now = now->next;
+	    now = now->next;//prepare to start next comparing
+	    count = newCount;//set list new number before new comparing start
     }
 
     now = head;
