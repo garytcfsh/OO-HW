@@ -30,9 +30,34 @@ int main( int argc, char **argv)
     }
     head = head->next;
     now = head;
-    for (int ii=0; ii<count; ii++)
+    int j=0, k=0;
+    int newCount = count;
+    for ( j=0; j<count; j++)
     {
-        cout << now->c << endl;
+	    temp = now->next;
+	    count = newCount;
+	    for ( k=j+1; k<count; k++)
+	    {
+		if (now->c == temp->c)
+		{
+			now->count = now->count + 1;
+			temp = temp->remove( temp);
+			newCount--;
+		}
+		else
+		{
+			temp = temp->next;
+		}
+	    }
+	    now = now->next;
+    }
+
+    now = head;
+
+    for (int ii=0; ii<newCount; ii++)
+    {
+//        cout << now->c << " list num: " << now->num << endl;
+        cout << now->c << "-" << now->count << endl;
         now = now->next;
     }
 

@@ -1,4 +1,4 @@
-all:hw1.cpp
-	g++ hw1.cpp -o a.out
+all:main.cpp list.cpp list.h
+	g++ main.cpp list.cpp -o main.out
 clean:
-	rm a.out
+	rm main.out
